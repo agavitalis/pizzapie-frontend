@@ -462,7 +462,7 @@ color: #e80909;
 line-height: 67px;
 font-weight: bold;
 }
-.outs_more-buttn a, .w3layouts-jewel-shop a {
+.outs_more-buttn a, .pizza-jewel-shop a {
 font-size: 14px;
 color: #000;
 text-decoration: none;
@@ -476,7 +476,7 @@ border: 1px solid #000000;
 margin-top: 28px;
 border-radius: 10px;
 }
-.outs_more-buttn a:hover,.w3layouts-jewel-shop a:hover,.click-me:hover,button[type=submit]:hover{
+.outs_more-buttn a:hover,.pizza-jewel-shop a:hover,.click-me:hover,button[type=submit]:hover{
 background:#000;
 color: #fff;
 }
@@ -485,7 +485,7 @@ color: #fff;
 .contact-list-grid p,
 .shopping-degine  p,
 .about-inner-mid p,
-.left-side-w3layouts p,
+.left-side-pizza p,
 .blog-agile-text-middle p{
 font-size: 14px;
 color: #000;
@@ -499,7 +499,7 @@ line-height: 28px;
 font-family: 'Lobster', cursive;
 }
 /* about-inner */
-.abt-inner-w3layouts-img img {
+.abt-inner-pizza-img img {
 border: 2px solid #f00;
 padding: 5px;
 }
@@ -553,7 +553,7 @@ text-transform: uppercase;
 color:#e80909;
 font-family: 'Shadows Into Light', cursive;
 }
-.left-side-w3layouts h5 {
+.left-side-pizza h5 {
 font-size: 15px;
 color: #000;
 }
@@ -1078,7 +1078,7 @@ margin: 24px 0 24px 30px;
 font-size: 35px;
 line-height: 60px;
 }
-.outs_more-buttn a, .w3layouts-jewel-shop a {
+.outs_more-buttn a, .pizza-jewel-shop a {
 padding: 12px 23px;
 margin-top: 25px;
 }
@@ -1254,7 +1254,7 @@ font-size: 45px;
 .jst-wthree-text h2, .shopping-degine h4, .about-inner-mid h4 {
 font-size: 26px;
 }
-.outs_more-buttn a, .w3layouts-jewel-shop a {
+.outs_more-buttn a, .pizza-jewel-shop a {
 padding: 10px 20px;
 margin-top: 22px;
 letter-spacing: 1px;
@@ -1320,7 +1320,7 @@ height: 411px;
 .service-list-inner-wthree span {
 font-size: 35px;
 }
-.left-side-w3layouts {
+.left-side-pizza {
 margin-top: 28px;
 }
 .blog-agile-text-middle {
@@ -1420,7 +1420,7 @@ top: 2px;
 }
 .holder{width:94%;}
 .jst-wthree-text h2{margin-top:20px;}
-.outs_more-buttn a, .w3layouts-jewel-shop a {
+.outs_more-buttn a, .pizza-jewel-shop a {
 margin-top: 16px;
 }
 .footer-header {
@@ -1550,7 +1550,7 @@ height: 351px;
 .service-list-inner-wthree {
 padding: 4em 1em;
 }
-.abt-inner-w3layouts-img,.contact-list-grid {
+.abt-inner-pizza-img,.contact-list-grid {
 margin-top: 20px;
 }
 .address_mail_footer_grids iframe {

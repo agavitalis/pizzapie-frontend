@@ -8,6 +8,22 @@ class App extends React.Component {
 
   constructor(props) {
     super(props)
+    this.state={
+      active:false
+    }
+    this.showMenu = this.showMenu.bind(this);
+  }
+
+  showMenu(){
+    if(!this.state.active){
+        this.setState({ 
+            active: "open"
+        });
+    }else{
+        this.setState({ 
+            active: false
+        });
+    }    
   }
 
   render() {
@@ -15,7 +31,8 @@ class App extends React.Component {
     return (
       <div>
         <div className="header-main" id="home">
-          <Header/>
+          <Header  showMenu={this.showMenu}  active={this.state.active} />
+         
           {/* //Navigation */}
           {/* Slideshow 4 */}
           <div className="slider">
@@ -68,7 +85,7 @@ class App extends React.Component {
         <section className="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
           <div className="container py-lg-5 py-md-5 py-sm-4 py-4">
             <div className="row agile-abt-info ">
-              <div className="col-lg-6 col-md-6 w3layouts-left-side-img">
+              <div className="col-lg-6 col-md-6 pizza-left-side-img">
                 <img src="images/ab1.png" alt className="intro-img img-fluid" />
               </div>
               <div className="col-lg-6 col-md-6 info-sub-w3 pb-lg-3 pb-md-2 pb-2">
@@ -156,6 +173,7 @@ class App extends React.Component {
           </div>
         </section>
         {/*//Our Menu */}
+
         <section className="State-menu py-lg-4 py-md-3 py-sm-3 py-3">
           <div className="container-fluid py-lg-5 py-md-4 py-sm-4 py-3">
             <div className="stats-info row ">

@@ -9,6 +9,23 @@ class Contact extends React.Component {
 
   constructor(props) {
     super(props)
+
+    this.state={
+        active:false
+    }
+    this.showMenu = this.showMenu.bind(this);
+  }
+
+  showMenu(){
+    if(!this.state.active){
+        this.setState({ 
+            active: "open"
+        });
+    }else{
+        this.setState({ 
+            active: false
+        });
+    }    
   }
 
   render() {
@@ -17,7 +34,7 @@ class Contact extends React.Component {
         <>
             {/*header*/}
             <div className="header-main" id="home">
-                <Header/>
+            <Header  showMenu={this.showMenu}  active={this.state.active}/>
             </div>
             {/*//header*/}
 
@@ -39,7 +56,7 @@ class Contact extends React.Component {
                     <div className="col-lg-4 col-md-4 address_mail_footer_grids">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199970.4333595444!2d7.5076964943158755!3d6.368325996417799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1044a728c3b30bbd%3A0x3bb41dc04492c6d0!2sEnugu%20Lifestyle%20%26%20Golf%20City%20Administrative%20Building!5e0!3m2!1sen!2sin!4v1572509849165!5m2!1sen!2sin"/>
                     </div>
-                    <div className="col-lg-3 col-md-3 col-sm-4 abt-inner-w3layouts-img">
+                    <div className="col-lg-3 col-md-3 col-sm-4 abt-inner-pizza-img">
                     <img src="images/ab3.jpg" alt className="img-fluid" />
                     </div>
                     <div className="col-lg-5 col-md-5 col-sm-8 contact-list-grid">

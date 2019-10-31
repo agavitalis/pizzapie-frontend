@@ -1,7 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-function Header(props){
+class Header extends React.Component{
+    constructor(props) {
+        super(props)
+    }
+    render(){
     return(
         <>
            <div className="header-outs">
@@ -9,12 +13,12 @@ function Header(props){
                 <h1><Link to="/">Pizza-Pie</Link></h1>
                 </div>
                 {/* Collect the nav links, forms, and other content for toggling */}
-                <div className="menu">
+                <div className={"menu " + this.props.active}>
                 <div className="cart">
                     <span className="fas fa-shopping-cart mr-2"></span>
                     <span className="badge badge-light">4</span>
                 </div>       
-                <a href id="menuToggle"> <span className="navClosed" /> </a>
+                <a href id="menuToggle" onClick={this.props.showMenu}> <span className="navClosed" /> </a>
                 <nav>
                     <Link to="/" className="active">Home</Link>
                     <Link to="/contact">Contact</Link>
@@ -24,7 +28,7 @@ function Header(props){
           </div>
 
         </>
-    )
+    )}
 }
 
 export default Header;
