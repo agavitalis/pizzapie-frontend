@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from './partials/Footer';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Header from './partials/Header';
+import PizzaMenu from './partials/PizzaMenu';
 
 
 class App extends React.Component {
@@ -9,9 +10,28 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state={
-      active:false
+      active:false,
+      cart: 0,
+      cart_item: []
     }
+
     this.showMenu = this.showMenu.bind(this);
+    this.addToCart = this.addToCart.bind(this);
+  }
+
+  addToCart(){
+      this.setState({ 
+          cart: Number(this.state.cart) + 1
+      }); 
+      localStorage.setItem('cart',this.state.cart);  
+  }
+
+  removeFromCart(){
+
+      this.setState({ 
+          cart: Number(this.state.cart) - 1
+      });
+      localStorage.setItem('cart',this.state.cart); 
   }
 
   showMenu(){
@@ -26,12 +46,18 @@ class App extends React.Component {
     }    
   }
 
+  componentDidMount(){
+    this.setState({
+      cart:localStorage.getItem('cart')
+    })
+  }
+
   render() {
 
     return (
       <div>
         <div className="header-main" id="home">
-          <Header  showMenu={this.showMenu}  active={this.state.active} />
+          <Header  showMenu={this.showMenu} cart={this.state.cart} active={this.state.active} />
          
           {/* //Navigation */}
           {/* Slideshow 4 */}
@@ -105,73 +131,7 @@ class App extends React.Component {
         </section>
         {/*//about */}
         {/*Our Menu*/}
-        <section className="our-menu py-lg-4 py-md-3 py-sm-3 py-3">
-          <div className="container py-lg-5 py-md-5 py-sm-4 py-3">
-            <h3 className="title text-center clr mb-lg-5 mb-md-4 mb-sm-4 mb-3">Classic Top 10</h3>
-            {/*Horizontal Tab*/}
-            <div className='row' id="classic-pizza">
-              <div className="col-md-3 p-3">
-                <div className="grid-hover">
-                  <div href="#" className="column">
-                    
-                    <img src="images/g3.jpg" alt="img04" className="img-fluid" />
-                    <div className="text">
-                      <h6>Class Pizza</h6>
-                      <p>$200</p>
-                      <button className="btn btn-warning mt-1">Add to Cart</button>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-3 p-3">
-                <div className="grid-hover">
-                  <div href="#" className="column">
-                    
-                    <img src="images/g3.jpg" alt="img04" className="img-fluid" />
-                    <div className="text">
-                      <h6>Class Pizza</h6>
-                      <p>$200</p>
-                      <button className="btn btn-warning mt-1">Add to Cart</button>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-3 p-3">
-                <div className="grid-hover">
-                  <div href="#" className="column">
-                    
-                    <img src="images/g3.jpg" alt="img04" className="img-fluid" />
-                    <div className="text">
-                      <h6>Class Pizza</h6>
-                      <p>$200</p>
-                      <button className="btn btn-warning mt-1">Add to Cart</button>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-3 p-3">
-                <div className="grid-hover">
-                  <div href="#" className="column">
-                    
-                    <img src="images/g3.jpg" alt="img04" className="img-fluid" />
-                    <div className="text">
-                      <h6>Class Pizza</h6>
-                      <p>$200</p>
-                      <button className="btn btn-warning mt-1">Add to Cart</button>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-              
-              
-            </div>
-            
-          </div>
-        </section>
+        <PizzaMenu addToCart={this.addToCart}/>
         {/*//Our Menu */}
 
         <section className="State-menu py-lg-4 py-md-3 py-sm-3 py-3">

@@ -5,6 +5,9 @@ class Header extends React.Component{
     constructor(props) {
         super(props)
     }
+
+
+
     render(){
     return(
         <>
@@ -16,7 +19,7 @@ class Header extends React.Component{
                 <div className={"menu " + this.props.active}>
                 <div className="cart">
                     <span className="fas fa-shopping-cart mr-2"></span>
-                    <span className="badge badge-light">4</span>
+                    <span className="badge badge-light">{this.props.cart}</span>
                 </div>       
                 <a href id="menuToggle" onClick={this.props.showMenu}> <span className="navClosed" /> </a>
                 <nav>
