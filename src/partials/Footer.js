@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function Footer(props){
     return(
@@ -29,7 +30,7 @@ function Footer(props){
                     <h4 className="pb-lg-3 pb-3">Make A Reservation</h4>
                     <div className="book-here">
                         <p>Don't let your busy schedule robe you off you favourite yummy</p>
-                        <a href="contact.html" className="text-center">Make a reserve </a>
+                        <Link to="/contact" className="text-center">Make a reserve </Link>
                     </div>
                     </div>
                 </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 import Footer from './partials/Footer';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Header from './partials/Header';
 
 
 class App extends React.Component {
@@ -13,24 +15,7 @@ class App extends React.Component {
     return (
       <div>
         <div className="header-main" id="home">
-          <div className="header-outs">
-            <div className="header-bar">
-              <h1><a href="index.html">Pizza-Pie</a></h1>
-            </div>
-            {/* Collect the nav links, forms, and other content for toggling */}
-            <div className="menu">
-              <div className="cart">
-                <span className="fas fa-shopping-cart mr-2"></span>
-                <span className="badge badge-light">4</span>
-              </div>       
-              <a href id="menuToggle"> <span className="navClosed" /> </a>
-              <nav>
-                <a href="index.html" className="active">Home</a>
-                <a href="contact.html">Contact</a>
-              </nav>
-            </div>
-            <div className="clearfix"> </div>
-          </div>
+          <Header/>
           {/* //Navigation */}
           {/* Slideshow 4 */}
           <div className="slider">
@@ -95,7 +80,7 @@ class App extends React.Component {
                   The purpose is to keep you refreshed and going all day long, with just a single bite.
                   pizzapie, a pizza like no other </p>
                 <div className="outs_more-buttn">
-                  <a href="about.html">Really?</a>
+                  <a href="#classic-pizza">Order Now</a>
                 </div>
               </div>
             </div>
@@ -107,7 +92,7 @@ class App extends React.Component {
           <div className="container py-lg-5 py-md-5 py-sm-4 py-3">
             <h3 className="title text-center clr mb-lg-5 mb-md-4 mb-sm-4 mb-3">Classic Top 10</h3>
             {/*Horizontal Tab*/}
-            <div className='row'>
+            <div className='row' id="classic-pizza">
               <div className="col-md-3 p-3">
                 <div className="grid-hover">
                   <div href="#" className="column">
