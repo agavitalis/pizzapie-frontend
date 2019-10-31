@@ -111,6 +111,23 @@ width: 220px;
 z-index: 9001;/* IT'S OVER 9000! */
 padding-top: 4em;
 }
+.cart{
+
+    background: #ffbf00;
+    display: block;
+    position: fixed;
+    height: 40px;
+    right: 9%;
+    top: 34px;
+    width: 68px;
+    z-index: 9999;
+    border-radius: 5px;
+    text-align: center;
+    margin: auto;
+    font-size: 18px;
+    padding-top: 6px;
+    
+}
 #menuToggle {
 background:#ffbf00;
 display: block;
@@ -680,6 +697,8 @@ color: white;
 background:rgba(0, 0, 0, 0.6);
 padding: 16px;
 font-size: 15px;
+width:100%;
+text-align: center;
 }
 .column:hover .text {
 opacity: 1;
@@ -854,7 +873,7 @@ top: -88px;
 left:0px;
 }
 /*--//footer-top-- */
-.subscribe-footer{
+.advert-footer{
 background: url(../images/b1.jpg)no-repeat center;
 background-size: cover;
 -webkit-background-size: cover;
