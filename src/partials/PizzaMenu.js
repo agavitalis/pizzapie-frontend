@@ -34,7 +34,7 @@ class PizzaMenu extends React.Component{
                                     <div key={index} className="col-md-3 p-3">
                                         <div className="grid-hover">
                                             <div href="#" className="column">
-                                                <img src={pizza.picture} alt="img04" className="img-fluid" />
+                                                <img src={pizza.picture} alt="img04" className="img-fluid" width="290" height="250"/>
                                                 <div className="text">
                                                     <h6>{pizza.name}</h6>
                                                     <p>${pizza.price}</p>

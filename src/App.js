@@ -25,16 +25,17 @@ class App extends React.Component {
     this.cart_items = []
   }
 
-  addToCart(e){
+   addToCart(e){
 
     //check the cart
     let pizza_in_cart = JSON.parse(localStorage.getItem("cart_items"));
     //check if this product have been added
-    let check = null
+    var check_duplicate = null
     if(pizza_in_cart){
-      check = pizza_in_cart.find(p => p.id === e.target.dataset.id)
+      
+      check_duplicate =  pizza_in_cart.find(p => p.id === e.target.dataset.id)
     } 
-    if(!check){
+    if(!check_duplicate){
 
       //build an object with what was clicked
       let cart_object = {
@@ -323,7 +324,7 @@ class App extends React.Component {
                           <tr key={index}>
                             <th scope="row">{index + 1}</th>
                             <th>{pizza.name}</th>
-                            <th>Picture</th>
+                            <th><img src={pizza.picture}  className="img-fluid" width="50" height="50"/></th>
                             <th>{pizza.quantity}</th>
                             
                             <td className="text-center">
