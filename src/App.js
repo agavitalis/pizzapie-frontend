@@ -12,26 +12,100 @@ class App extends React.Component {
     this.state={
       active:false,
       cart: 0,
-      cart_item: []
+      cart_items: []
     }
 
     this.showMenu = this.showMenu.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
+    this.increaseQty = this.increaseQty.bind(this);
+    this.decreaseQty = this.decreaseQty.bind(this);
+    this.checkOut = this.checkOut.bind(this);
+    this.cart_items = []
   }
 
-  addToCart(){
+  addToCart(e){
+
+    //check the cart
+    let pizza_in_cart = JSON.parse(localStorage.getItem("cart_items"));
+    //check if this product have been added
+    let check = null
+    if(pizza_in_cart){
+      check = pizza_in_cart.find(p => p.id === e.target.dataset.id)
+    } 
+    if(!check){
+
+      //build an object with what was clicked
+      let cart_object = {
+        id: e.target.dataset.id,
+        name: e.target.dataset.name,
+        quantity: 1,
+        picture: e.target.dataset.picture,
+        price: e.target.dataset.price
+      }
+
+      //push this object to the list of arrays
+      this.cart_items.push(cart_object)
+
+      //update the cart state
       this.setState({ 
-          cart: Number(this.state.cart) + 1
-      }); 
+        cart_items: this.cart_items,
+        cart: Number(this.state.cart) + 1
+      });
+      //save to local storage
       localStorage.setItem('cart',this.state.cart);  
+      localStorage.setItem("cart_items", JSON.stringify(this.state.cart_items));
+
+    }else{
+      alert("Pizza already added to cart")
+    }
+    
+  }
+
+  increaseQty(e){
+
+    let pizza_in_cart = JSON.parse(localStorage.getItem("cart_items"));
+    
+    pizza_in_cart.find((o, i) => {
+
+        if (o.id === e.target.dataset.id) {
+            pizza_in_cart[i].quantity = Number(pizza_in_cart[i].quantity) + 1
+            //pizza_in_cart[i] = { name: 'new string', value: 'this', other: 'that' };
+            return true; 
+        }
+
+    });
+    
+    console.log(pizza_in_cart)
+
+    
+
+  }
+
+  decreaseQty(){
+    this.setState({ 
+      cart: Number(this.state.cart) - 1
+    }); 
+    localStorage.setItem('cart',this.state.cart); 
   }
 
   removeFromCart(){
-
       this.setState({ 
-          cart: Number(this.state.cart) - 1
-      });
+        cart: Number(this.state.cart) - 1
+      }); 
       localStorage.setItem('cart',this.state.cart); 
+  }
+
+  showCart(){
+
+    this.setState({ 
+      cart_items: JSON.parse(localStorage.getItem("cart_items"))
+    }); 
+   
+  }
+
+  checkOut(){
+    this.props.history.push('/checkout')
   }
 
   showMenu(){
@@ -47,9 +121,17 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    this.setState({
-      cart:localStorage.getItem('cart')
-    })
+
+    let cart_init = JSON.parse(localStorage.getItem("cart_items"))
+    if(cart_init){
+
+      this.setState({
+        cart:localStorage.getItem('cart'),
+        cart_items: JSON.parse(localStorage.getItem("cart_items"))
+      })
+
+    }
+    
   }
 
   render() {
@@ -165,6 +247,69 @@ class App extends React.Component {
           </div>
         </section>
         <Footer/>
+
+
+        <div>
+          
+          {/*Cart Modal */}
+          <div className="modal fade" id="certModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="exampleModalCenterTitle">Cart</h5>
+                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div className="modal-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Pizza</th>
+                      <th scope="col">Picture</th>
+                      <th scope="col">Qty</th>
+                      <th scope="col" width="120px">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  
+                    {
+                      this.state.cart_items.map((pizza,index)=>{
+                        return(
+
+                          <tr key={index}>
+                            <th scope="row">{index + 1}</th>
+                            <th>{pizza.name}</th>
+                            <th>Picture</th>
+                            <th>{pizza.quantity}</th>
+                            
+                            <td className="text-center">
+                              <i class="fa fa-minus mr-3" data-id={pizza.id} onClick={this.removeFromCart}  aria-hidden="true"></i>
+                              <i class="fa fa-plus mr-4" data-id={pizza.id} onClick={this.increaseQty} aria-hidden="true"></i>
+                              <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                            </td>
+                            
+                          </tr>
+
+                        )
+                      })
+                     
+                    }
+                   
+                  </tbody>
+                 
+                </table>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Clear Cart</button>
+                  <Link to="/checkout"><button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.checkOut}>Checkout</button></Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     )

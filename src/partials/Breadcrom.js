@@ -8,10 +8,10 @@ function Breadcrom(props){
                 <div className="inner_breadcrumb  ml-4">
                 <ul className="short_ls">
                     <li>
-                    <Link to="/">Pizza-Pie</Link>
-                    <span>//</span>
+                    <Link to="/">Pizza-Pie </Link>
+                    <span>|| </span>
                     </li>
-                    <li>{props.title}</li>
+                    <li> {" || " + props.title}</li>
                 </ul>
                 </div>
             </div>

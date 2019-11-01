@@ -38,7 +38,9 @@ class PizzaMenu extends React.Component{
                                                 <div className="text">
                                                     <h6>{pizza.name}</h6>
                                                     <p>${pizza.price}</p>
-                                                    <button className="btn btn-warning mt-1" onClick={this.props.addToCart}>Add to Cart</button>
+                                                    <button className="btn btn-warning mt-1" data-picture={pizza.picture} data-price={pizza.price} data-name={pizza.name} data-id={pizza.id} onClick={this.props.addToCart}>
+                                                        Add to Cart
+                                                    </button>
                                                 </div>
 
                                             </div>

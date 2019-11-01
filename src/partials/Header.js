@@ -17,7 +17,7 @@ class Header extends React.Component{
                 </div>
                 {/* Collect the nav links, forms, and other content for toggling */}
                 <div className={"menu " + this.props.active}>
-                <div className="cart">
+                <div className="cart"data-toggle="modal" data-target="#certModal">
                     <span className="fas fa-shopping-cart mr-2"></span>
                     <span className="badge badge-light">{this.props.cart}</span>
                 </div>       
