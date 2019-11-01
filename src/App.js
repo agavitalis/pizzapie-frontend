@@ -21,6 +21,7 @@ class App extends React.Component {
     this.increaseQty = this.increaseQty.bind(this);
     this.decreaseQty = this.decreaseQty.bind(this);
     this.checkOut = this.checkOut.bind(this);
+    this.clearCart = this.clearCart.bind(this);
     this.cart_items = []
   }
 
@@ -69,31 +70,57 @@ class App extends React.Component {
     pizza_in_cart.find((o, i) => {
 
         if (o.id === e.target.dataset.id) {
-            pizza_in_cart[i].quantity = Number(pizza_in_cart[i].quantity) + 1
-            //pizza_in_cart[i] = { name: 'new string', value: 'this', other: 'that' };
-            return true; 
+            //pizza_in_cart[i].quantity = Number(pizza_in_cart[i].quantity) + 1
+            //alert("found and increased")
+            pizza_in_cart[i] = {
+              id: e.target.dataset.id,
+              name: e.target.dataset.name,
+              quantity:  Number(pizza_in_cart[i].quantity) + 1,
+              picture: e.target.dataset.picture,
+              price: e.target.dataset.price
+            }
+
         }
+
+        localStorage.setItem("cart_items", JSON.stringify(pizza_in_cart));
+        this.componentDidMount();
 
     });
     
-    console.log(pizza_in_cart)
+  }
 
+  decreaseQty(e){
     
+    let pizza_in_cart = JSON.parse(localStorage.getItem("cart_items"));
+    
+    pizza_in_cart.find((o, i) => {
+
+        if (o.id === e.target.dataset.id) {
+            //pizza_in_cart[i].quantity = Number(pizza_in_cart[i].quantity) + 1
+            pizza_in_cart[i] = {
+              id: e.target.dataset.id,
+              name: e.target.dataset.name,
+              quantity: Number(pizza_in_cart[i].quantity) - 1,
+              picture: e.target.dataset.picture,
+              price: e.target.dataset.price
+            }
+        }
+
+        localStorage.setItem("cart_items", JSON.stringify(pizza_in_cart));
+        this.componentDidMount();
+
+    });
 
   }
 
-  decreaseQty(){
-    this.setState({ 
-      cart: Number(this.state.cart) - 1
-    }); 
-    localStorage.setItem('cart',this.state.cart); 
-  }
+  removeFromCart(e){
 
-  removeFromCart(){
-      this.setState({ 
-        cart: Number(this.state.cart) - 1
-      }); 
-      localStorage.setItem('cart',this.state.cart); 
+    let pizza_in_cart = JSON.parse(localStorage.getItem("cart_items"));
+    pizza_in_cart = pizza_in_cart.filter(pizza=>pizza.id != e.target.dataset.id) 
+
+    localStorage.setItem("cart_items", JSON.stringify(pizza_in_cart));
+    this.componentDidMount();
+
   }
 
   showCart(){
@@ -105,7 +132,22 @@ class App extends React.Component {
   }
 
   checkOut(){
-    this.props.history.push('/checkout')
+    
+    if(this.state.cart > 0){
+      this.props.history.push('/checkout')
+    }
+    
+  }
+
+  clearCart(){
+    localStorage.removeItem('cart_items')
+    localStorage.removeItem('cart')
+    this.cart_items = []
+
+    this.setState({
+      cart:0,
+      cart_items: []
+    })
   }
 
   showMenu(){
@@ -126,7 +168,7 @@ class App extends React.Component {
     if(cart_init){
 
       this.setState({
-        cart:localStorage.getItem('cart'),
+        cart:JSON.parse(localStorage.getItem("cart_items")).length,
         cart_items: JSON.parse(localStorage.getItem("cart_items"))
       })
 
@@ -285,9 +327,9 @@ class App extends React.Component {
                             <th>{pizza.quantity}</th>
                             
                             <td className="text-center">
-                              <i class="fa fa-minus mr-3" data-id={pizza.id} onClick={this.removeFromCart}  aria-hidden="true"></i>
-                              <i class="fa fa-plus mr-4" data-id={pizza.id} onClick={this.increaseQty} aria-hidden="true"></i>
-                              <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                              <i class="fa fa-minus mr-3" data-picture={pizza.picture} data-price={pizza.price} data-name={pizza.name} data-id={pizza.id} onClick={this.decreaseQty}  aria-hidden="true"></i>
+                              <i class="fa fa-plus mr-4" data-picture={pizza.picture} data-price={pizza.price} data-name={pizza.name} data-id={pizza.id} onClick={this.increaseQty} aria-hidden="true"></i>
+                              <i class="fa fa-trash text-danger" aria-hidden="true" data-id={pizza.id} onClick={this.removeFromCart}></i>
                             </td>
                             
                           </tr>
@@ -302,7 +344,7 @@ class App extends React.Component {
                 </table>
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Clear Cart</button>
+                  <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.clearCart}>Clear Cart</button>
                   <Link to="/checkout"><button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.checkOut}>Checkout</button></Link>
                 </div>
               </div>

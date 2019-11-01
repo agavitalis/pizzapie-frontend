@@ -12,11 +12,19 @@ class Checkout extends React.Component {
 
         this.state={
             active:false,
+            first_name :'',
+            last_name :'',
+            email :'',
+            address :'',
+            country :'',
+            state :'',
             cart: 0,
             cart_items: [],
             checkOutURL : process.env.REACT_APP_API_URL+"/api/checkOut",
         }
         this.showMenu = this.showMenu.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     showMenu() {
@@ -54,7 +62,6 @@ class Checkout extends React.Component {
 
     handleSubmit(event) {
        
-
         var data =  {
                         first_name :this.state.first_name,
                         last_name :this.state.last_name,
@@ -62,15 +69,16 @@ class Checkout extends React.Component {
                         address :this.state.address,
                         country :this.state.country,
                         state :this.state.state,
+                        cart: JSON.parse(localStorage.getItem("cart_items"))
                     }
 
-        var url = this.state.url
+        console.log(JSON.stringify(data))
 
         fetch(this.state.checkOutURL, {
             method: 'POST',
             body: JSON.stringify(data),
             headers:{
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8;text/json'
             }
         }).then(res => res.json())
         .then((response)=>{
@@ -83,15 +91,15 @@ class Checkout extends React.Component {
                 this.props.history.push('/');
 
             }else{
-               alert("We couldnt place you orders at this time, please try again")               
+               console.log(typeof(response))    
+               console.log(JSON.parse(response))         
             }
             
         })
-        .catch(error => alert("We couldnt place you orders at this time, please try again"+ error)); 
+        .catch(error => alert("We couldnt place you orders at this time, please try again"+ error + this.state.checkOutURL)); 
         event.preventDefault();
     }
     
-
     render() {
 
         return (
@@ -143,16 +151,16 @@ class Checkout extends React.Component {
                             <div className="col-md-8 order-md-1">
                                 <h4 className="mb-3">Delivery address</h4>
                                 <h6 className="mb-3">All payments will be made on delivery</h6>
-                                <form>
+                                <form onSubmit={this.handleSubmit}>
                                     <div className="row">
                                         <div className="col-md-6 mb-3">
                                             <label htmlFor="firstName">First name</label>
-                                            <input type="text" className="form-control" name="firstName" placeholder="Your First Name" required onChange={this.handleChange}/>
+                                            <input type="text" className="form-control" name="first_name"  placeholder="Your First Name" required onChange={this.handleChange}/>
                                             
                                         </div>
                                         <div className="col-md-6 mb-3">
                                             <label htmlFor="lastName">Last name</label>
-                                            <input type="text" className="form-control" name="lastName" placeholder="Your Last Name" required onChange={this.handleChange}/>
+                                            <input type="text" className="form-control" name="last_name" placeholder="Your Last Name" required onChange={this.handleChange}/>
                                            
                                         </div>
                                     </div>
