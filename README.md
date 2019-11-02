@@ -1,4 +1,5 @@
 Pizzapie, a Pizza ordering application. Built on React and Laravel as its API engine.
+## This application is live on [https://pizzapie.herokuapp.com]
 
 ## Available Scripts
 
