@@ -101,7 +101,7 @@ class Checkout extends React.Component {
     }
     
     render() {
-
+        var total_price = 0
         return (
             <>
                 {/*header*/}
@@ -128,7 +128,9 @@ class Checkout extends React.Component {
                                 </h4>
                                 <ul className="list-group mb-3">
                                 {
+                                   
                                     this.state.cart_items.map((pizza,index)=>{
+                                       total_price = total_price + (Number(pizza.price) * Number(pizza.quantity))
                                         return(
                                                     <li key={index} className="list-group-item d-flex justify-content-between lh-condensed">
                                                         <div>
@@ -143,7 +145,7 @@ class Checkout extends React.Component {
                                                                        
                                     <li className="list-group-item d-flex justify-content-between">
                                         <span>Total (USD)</span>
-                                        <strong>$20</strong>
+                                        <strong>${total_price}</strong>
                                     </li>
                                 </ul>
                                

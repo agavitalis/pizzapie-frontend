@@ -30,13 +30,12 @@ class App extends React.Component {
     //check the cart
     let pizza_in_cart = JSON.parse(localStorage.getItem("cart_items"));
     //check if this product have been added
-    var check_duplicate = null
-    if(pizza_in_cart){
-      
-      check_duplicate =  pizza_in_cart.find(p => p.id === e.target.dataset.id)
+    var check = null
+    if(pizza_in_cart != null){
+       check =  pizza_in_cart.find(p => p.id === e.target.dataset.id)
     } 
-    if(!check_duplicate){
 
+    if(check == null){
       //build an object with what was clicked
       let cart_object = {
         id: e.target.dataset.id,
@@ -55,8 +54,8 @@ class App extends React.Component {
         cart: Number(this.state.cart) + 1
       });
       //save to local storage
-      localStorage.setItem('cart',this.state.cart);  
-      localStorage.setItem("cart_items", JSON.stringify(this.state.cart_items));
+      localStorage.setItem('cart',Number(this.state.cart) + 1);  
+      localStorage.setItem("cart_items", JSON.stringify(this.cart_items));
 
     }else{
       alert("Pizza already added to cart")
