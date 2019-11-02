@@ -88,6 +88,9 @@ class Checkout extends React.Component {
                 //clear cart
 
                 //back to home
+                localStorage.removeItem('cart_items')
+                localStorage.removeItem('cart')
+                
                 this.props.history.push('/');
 
             }else{
