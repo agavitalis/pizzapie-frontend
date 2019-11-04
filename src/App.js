@@ -236,7 +236,7 @@ class App extends React.Component {
           <div className="container py-lg-5 py-md-5 py-sm-4 py-4">
             <div className="row agile-abt-info ">
               <div className="col-lg-6 col-md-6 pizza-left-side-img">
-                <img src="images/ab1.png" alt className="intro-img img-fluid" />
+                <img src="images/ab1.png"  className="intro-img img-fluid" />
               </div>
               <div className="col-lg-6 col-md-6 info-sub-w3 pb-lg-3 pb-md-2 pb-2">
                 <div className="jst-wthree-text pb-3">
@@ -304,7 +304,7 @@ class App extends React.Component {
                   </button>
                 </div>
                 <div className="modal-body">
-                <table class="table table-bordered">
+                <table className="table table-bordered">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
@@ -327,9 +327,9 @@ class App extends React.Component {
                             <th>{pizza.quantity}</th>
                             
                             <td className="text-center">
-                              <i class="fa fa-minus mr-3" data-picture={pizza.picture} data-price={pizza.price} data-name={pizza.name} data-id={pizza.id} onClick={this.decreaseQty}  aria-hidden="true"></i>
-                              <i class="fa fa-plus mr-4" data-picture={pizza.picture} data-price={pizza.price} data-name={pizza.name} data-id={pizza.id} onClick={this.increaseQty} aria-hidden="true"></i>
-                              <i class="fa fa-trash text-danger" aria-hidden="true" data-id={pizza.id} onClick={this.removeFromCart}></i>
+                              <i className="fa fa-minus mr-3" data-picture={pizza.picture} data-price={pizza.price} data-name={pizza.name} data-id={pizza.id} onClick={this.decreaseQty}  aria-hidden="true"></i>
+                              <i className="fa fa-plus mr-4" data-picture={pizza.picture} data-price={pizza.price} data-name={pizza.name} data-id={pizza.id} onClick={this.increaseQty} aria-hidden="true"></i>
+                              <i className="fa fa-trash text-danger" aria-hidden="true" data-id={pizza.id} onClick={this.removeFromCart}></i>
                             </td>
                             
                           </tr>

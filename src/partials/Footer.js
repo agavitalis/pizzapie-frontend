@@ -55,13 +55,13 @@ function Footer(props){
                 <div className="col-lg-6 col-md-12 wthree-left-right">
                     <div className="row">
                     <div className="col-md-4 footer-header pl-0">
-                        <h5><a href="index.html">Pizza-Pie</a></h5>
+                        <h5><Link to="/index">Pizza-Pie</Link></h5>
                         <p>Testy Yummy</p>
                     </div>
                     <div className="col-md-8 footer-para">
                         <p>Enugu State,<br />Enugu,Nigeria.</p>
                         <p>+(234) 81 6392 2749</p>
-                        <p><a href="mailto:vivvaa.vivvaa@gmail.com">sales@pizzapie.com</a></p>
+                        <p><Link to="mailto:vivvaa.vivvaa@gmail.com">sales@pizzapie.com</Link></p>
                     </div>
                     </div>
                 </div>
@@ -69,10 +69,10 @@ function Footer(props){
                     <h4 className="pb-lg-3 pb-3">Socialize</h4>
                     <div className="icons">
                     <ul>
-                        <li><a href="#"><span className="fas fa-envelope" /></a></li>
-                        <li><a href="#"><span className="fab fa-facebook-f" /></a></li>
-                        <li><a href="#"><span className="fab fa-twitter" /></a></li>
-                        <li><a href="#"><span className="fab fa-instagram" /></a></li>
+                        <li><Link to="#"><span className="fas fa-envelope" /></Link></li>
+                        <li><Link to="#"><span className="fab fa-facebook-f" /></Link></li>
+                        <li><Link to="#"><span className="fab fa-twitter" /></Link></li>
+                        <li><Link to="#"><span className="fab fa-instagram" /></Link></li>
                     </ul>
                     </div>
                 </div>

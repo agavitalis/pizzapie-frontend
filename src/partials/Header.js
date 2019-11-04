@@ -21,7 +21,7 @@ class Header extends React.Component{
                     <span className="fas fa-shopping-cart mr-2"></span>
                     <span className="badge badge-light">{this.props.cart}</span>
                 </div>       
-                <a href id="menuToggle" onClick={this.props.showMenu}> <span className="navClosed" /> </a>
+                <a href="#" id="menuToggle" onClick={this.props.showMenu}> <span className="navClosed" /> </a>
                 <nav>
                     <Link to="/" className="active">Home</Link>
                     <Link to="/contact">Contact</Link>
