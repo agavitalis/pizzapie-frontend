@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Footer from './partials/Footer';
 import Header from './partials/Header';
 import Breadcrom from './partials/Breadcrom';
@@ -182,14 +181,15 @@ class Checkout extends React.Component {
                                     </div>
                                     
                                     <div className="row">
+                                        
                                         <div className="col-md-6 mb-3">
-                                            <label htmlFor="country">Country</label>
-                                            <input type="text" className="form-control" name="country" placeholder="Eg:Nigeria" required onChange={this.handleChange}/>
+                                            <label htmlFor="country">State</label>
+                                            <input type="text" className="form-control" name="state" placeholder="Eg:Enugu" required onChange={this.handleChange}/>
                                             
                                         </div>
                                         <div className="col-md-6 mb-3">
-                                        <label htmlFor="country">State</label>
-                                            <input type="text" className="form-control" name="country" placeholder="Eg: Enugu" required onChange={this.handleChange}/>
+                                            <label htmlFor="country">Country</label>
+                                            <input type="text" className="form-control" name="country" placeholder="Eg:Nigeria" required onChange={this.handleChange}/>
                                             
                                         </div>
                                         

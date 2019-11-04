@@ -55,7 +55,7 @@ function Footer(props){
                 <div className="col-lg-6 col-md-12 wthree-left-right">
                     <div className="row">
                     <div className="col-md-4 footer-header pl-0">
-                        <h5><Link to="/index">Pizza-Pie</Link></h5>
+                        <h5><Link to="/">Pizza-Pie</Link></h5>
                         <p>Testy Yummy</p>
                     </div>
                     <div className="col-md-8 footer-para">

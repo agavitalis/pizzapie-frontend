@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Footer from './partials/Footer';
 import Header from './partials/Header';
 import Breadcrom from './partials/Breadcrom';
